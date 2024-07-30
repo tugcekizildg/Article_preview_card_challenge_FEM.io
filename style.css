@@ -1,0 +1,211 @@
+:root{
+    --veryDarkGrayishBlue : hsl(217, 19%, 35%);
+    --darkBlue: hsl(214, 17%, 51%);
+    --grayishBlue: hsl(212, 23%, 69%);
+    --lightGrayishBlue: hsl(210, 46%, 95%);
+    --fw-regular: 500;
+    --fw-bold: 700;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+button{
+    border:none;
+    outline:none;
+    cursor:pointer;
+}
+
+body{
+    font-family: "Manrope", sans-serif;
+    font-size: 13px;
+    font-weight: var(--fw-regular);
+    background-color: var(--lightGrayishBlue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1.5rem;
+}
+/* Desktop Design */
+.card{
+   display: grid;
+   grid-template-columns: 285px minmax(300px, 450px);
+   max-width: 730px;
+   border-radius: 0.875rem;
+   box-shadow: 0.5rem 0.5rem 0.425rem 1rem rgba(0,0,0,0.1);
+   height: auto;
+}
+
+.img-container{
+    border-radius: 0.425rem 0 0 0.425rem;
+    overflow: hidden;
+}
+.banner{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+    transition: all 0.3s;
+}
+.card:hover .banner{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.card-content{
+    background-color: white;
+    padding: 2rem 3rem;
+    border-radius: 0 .425rem 0.425rem 0;
+}
+.card-title{
+    font-size: 1.2rem;
+    font-weight: var(--fw-bold);
+    color: var(--veryDarkGrayishBlue);
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+.card-text{
+    color: var(--darkBlue);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+.card-bottom-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-bottom-info__text{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+}
+.share{
+    justify-content: space-between;
+}
+.author{
+    display: flex;
+    align-items: center;
+}
+.avatar{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+.name{
+    color: var(--veryDarkGrayishBlue);
+    font-weight: var(--fw-bold);
+}
+.date{
+    color: var(--grayishBlue);
+}
+.share{
+    position: relative;
+}
+.share-button{
+    background-color: var(--lightGrayishBlue);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+.share-button:hover, path:hover{
+    fill: var(--lightGrayishBlue);
+    background: var(--darkBlue);
+ }
+ .share-option{
+--scale: 0;
+--translateX: -50%;
+--translateY: 0;
+    background-color: var(--veryDarkGrayishBlue);
+    position: absolute;
+    margin-left: 1rem;
+    bottom: calc(100% + 2rem);
+    transform: translate(var(--translateX), var(--translateY)) scale(var(--scale)); 
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 1rem 2.5rem;
+    border-radius: 0.625rem;
+    visibility: hidden;
+    transtion: all 0.3s;
+}
+.share-option.active{
+    --scale: 1;
+    visibility: visible;
+}
+.share-option::after{
+    content: '';
+    background-color: var(--veryDarkGrayishBlue);
+    width: 1.4rem;
+    height: 1.4rem;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -60%) rotate(45deg);
+}
+.share-text{
+    text-transform: uppercase;
+    color: var(--grayishBlue);
+    letter-spacing: 6px;
+    font-size: 0.75rem;
+}
+.share-option> img:hover{
+    cursor: pointer;
+    filter: invert(150%);
+    -webkit-filter: invert(150%);
+    -moz-filter: invert(150%);
+    -o-filter: invert(150%);
+    -ms-filter: invert(150%);
+    transition: all 0.3s;
+}
+
+/* Mobile Design */
+
+@media screen and (max-width: 768px){
+body{
+    font-size: 12px;
+}
+.card{
+    grid-template-columns: 1fr;
+    overflow:hidden;
+    max-width: 20rem;
+}
+.img-container{
+    border-radius: 0;
+    height: 14rem;
+}
+.card-content{
+    padding: 2rem 2.3rem 1.5rem 1.8rem;
+}
+.card-title{
+    font-size: 1rem;
+}
+.card-text{
+    max-width: 30ch;
+    margin-bottom: 2rem;
+}
+.card-bottom-info{
+    position: relative;
+}
+.avatar{
+    width: 2.3rem;
+    height: 2.3rem;
+}
+.share{
+    z-index: 1;
+    position: relative;
+}
+.share-button{
+    font-size: 1.2rem;
+}
+.share-option{
+   --translateX: -83%;
+   --translateY: 110%;
+   padding: 2rem 7rem;
+   border-radius: 0;
+   z-index: -1;
+}
